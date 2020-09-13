@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Employee.hasMany(models.EmployeeAbsence)
       Employee.hasMany(models.EmployeeLeave)
-      Employee.hasMany(models.EmployeeAbsence)
+      Employee.hasOne(models.EmployeeSalary)
       Employee.hasMany(models.JobTitle)
     }
   };
