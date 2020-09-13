@@ -1,0 +1,5 @@
+Employees : id, birthdate, first_name, last_name, gender, join_date
+JobTitles : id, EmployeeId, title
+EmployeeAbsences : id, EmployeeId, start_date, end_date, break_time
+EmployeeLeaves : id, EmployeeId, start_date, end_date, type
+EmployeeSalaries : id, EmployeeId, start_date, end_date, salary
