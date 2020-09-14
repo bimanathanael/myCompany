@@ -8,6 +8,20 @@ class Controller {
     })
   }
 
+  static getAge (req, res){
+    let allEmployee = []
+    Employee.findAll()
+    .then( data => {
+      data.forEach(item => {
+        let currDate = new Date()
+        let age =  currDate.getFullYear()- item.dataValues.birthdate.getFullYear();
+        let name = item.dataValues.first_name + " " + item.dataValues.last_name
+        allEmployee.push({name: name , age : age})
+      })
+      return res.status(200).json(allEmployee)
+    })
+  }
+
   static randomAbsence (req, res){
     Employee.findAll()
     .then( data => {
@@ -130,7 +144,11 @@ class Controller {
               let endTime = new Date()
               endTime.setDate(endTime.getDate() + 90)
               
-              currSalary = currSalary + ((currSalary * totalPercentage) /100)
+              if(((currSalary * totalPercentage) /100) > 2000) {
+                currSalary += 2000
+              } else {
+                currSalary = currSalary + ((currSalary * totalPercentage) /100)
+              } 
               let newData = {
                 EmployeeId: item.dataValues.id,
                 start_date: new Date(),
